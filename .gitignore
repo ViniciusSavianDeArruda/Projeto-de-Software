@@ -1,0 +1,9 @@
+# Build
+bin/
+
+# Eclipse
+.settings/
+.metadata/
+
+# Logs
+*.log
