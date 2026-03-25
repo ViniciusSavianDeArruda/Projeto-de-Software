@@ -1,0 +1,13 @@
+# Arquivos compilados (Nunca enviar para o GitHub)
+bin/
+*.class
+
+# Configurações do Eclipse / VS Code
+.settings/
+.classpath
+.project
+
+# Arquivos temporários ou de log
+*.log
+
+
