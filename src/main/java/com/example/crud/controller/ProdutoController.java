@@ -1,6 +1,7 @@
 package com.example.crud.controller;
 
 import com.example.crud.model.Produto;
+import com.example.crud.repository.CategoriaRepository;
 import com.example.crud.repository.ProdutoRepository;
 import com.example.crud.service.ProdutoService;
 import org.springframework.stereotype.Controller;
@@ -19,15 +20,18 @@ public class ProdutoController {
 
     private final ProdutoRepository produtoRepository;
     private final ProdutoService produtoService;
+    private final CategoriaRepository categoriaRepository;
 
-    public ProdutoController(ProdutoRepository produtoRepository, ProdutoService produtoService) {
+    public ProdutoController(ProdutoRepository produtoRepository, ProdutoService produtoService, CategoriaRepository categoriaRepository) {
         this.produtoRepository = produtoRepository;
         this.produtoService = produtoService;
+        this.categoriaRepository = categoriaRepository;
     }
 
     @GetMapping("/formulario")
     public String exibirFormulario(Model model) {
         model.addAttribute("produto", new Produto());
+        model.addAttribute("categorias", categoriaRepository.findAll());
         return "formulario";
     }
     @PostMapping("/salvar")
@@ -53,9 +57,9 @@ public class ProdutoController {
     public String editarProduto(@PathVariable Integer id, Model model){
         Optional<Produto> produto = produtoRepository.findById(id);
         model.addAttribute("produto", produto);
+        model.addAttribute("categorias", categoriaRepository.findAll());
         System.out.println(produto.toString());
         return "formulario";
     }
-
 
 }

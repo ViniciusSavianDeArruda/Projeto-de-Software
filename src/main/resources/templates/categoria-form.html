@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Categoria</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+<div class="card shadow p-4" style="width: 400px;">
+    <h4 class="text-center mb-3">Cadastro de Categoria</h4>
+
+    <form th:action="@{/categoria/salvar}" th:object="${categoria}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <input type="text"
+                   class="form-control form-control-sm"
+                   th:field="*{nome}"
+                   placeholder="Nome da categoria">
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-sm">Limpar</button>
+        </div>
+
+    </form>
+
+    <div style="text-align: center; margin-top: 10px;">
+        <a href="/categoria/listar">Ver categorias</a>
+    </div>
+</div>
+
+</body>
+</html>

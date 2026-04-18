@@ -19,6 +19,7 @@ public class ProdutoService {
         if(produto.getPreco() <= 0){
             throw new RuntimeException("O valor deve ser maior que zero");
         }
+
         produtoRepository.save(produto);
 
     }

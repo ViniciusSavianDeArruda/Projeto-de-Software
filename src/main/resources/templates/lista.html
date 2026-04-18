@@ -12,10 +12,17 @@
 <div class="container mt-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2  style="text-align: center" class="mb-0">Lista de Produtos</h2>
-        <a href="/produto/formulario" class="btn btn-primary">
-            + Novo produto
-        </a>
+        <h2 style="text-align: center" class="mb-0">Lista de Produtos</h2>
+
+        <div class="d-flex gap-2">
+            <a href="/produto/formulario" class="btn btn-primary">
+                + Novo produto
+            </a>
+
+            <a href="/categoria/formulario" class="btn btn-success">
+                + Nova categoria
+            </a>
+        </div>
     </div>
 
     <div class="card shadow">
@@ -28,6 +35,7 @@
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
+                    <th>Categoria</th>
                     <th>Imagem</th>
                     <th>Ações</th>
                 </tr>
@@ -43,6 +51,8 @@
                     </td>
 
                     <td th:text="${p.quantidade}"></td>
+
+                    <td th:text="${p.categoria?.nome}"></td>
 
                     <td>
                         <img th:src="${p.imagem}"
