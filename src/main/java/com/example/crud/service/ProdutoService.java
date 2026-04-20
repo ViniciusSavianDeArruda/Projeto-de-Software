@@ -19,6 +19,9 @@ public class ProdutoService {
         if(produto.getPreco() <= 0){
             throw new RuntimeException("O valor deve ser maior que zero");
         }
+        if (produto.getCategoria() == null) {
+            throw new RuntimeException("O produto deve ter uma categoria");
+        }
 
         produtoRepository.save(produto);
 

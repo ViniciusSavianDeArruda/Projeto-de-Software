@@ -34,13 +34,13 @@
         </div>
 
         <div class="mb-2">
-            <select class="form-control form-control-sm" th:field="*{categoria}">
+            <select class="form-select form-select-sm"
+                    th:field="*{categoria}">
                 <option value="">Selecione a categoria</option>
                 <option th:each="cat : ${categorias}"
                         th:value="${cat.id}"
                         th:text="${cat.nome}">
                 </option>
-
             </select>
         </div>
 
@@ -49,15 +49,25 @@
         </div>
 
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
-            <button type="reset" class="btn btn-secondary btn-sm">Limpar</button>
+            <button type="submit"
+                    class="btn btn-success btn-sm"
+                    th:disabled="${#lists.isEmpty(categorias)}">
+                Cadastrar
+            </button>
+
+            <button type="reset" class="btn btn-secondary btn-sm">
+                Limpar
+            </button>
+
+            <a href="/categoria/formulario" class="btn btn-outline-primary btn-sm">
+                + Nova categoria
+            </a>
         </div>
     </form>
 
-    <div style="text-align: center; margin-top: 5px; font-size: 14px;">
+    <div class="text-center mt-2" style="font-size: 14px;">
         <a href="/">Voltar</a>
     </div>
 </div>
-
 </body>
 </html>
